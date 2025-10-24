@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NODE_ENV = "production"
+  NPM_FLAGS = "--include=dev"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  # All sensitive keys should be set in Netlify UI under Site settings > Environment variables
+  # Required environment variables:
+  # VITE_SUPABASE_URL - Set in Netlify UI
+  # VITE_SUPABASE_ANON_KEY - Set in Netlify UI
+  # VITE_STRIPE_PUBLIC_KEY - Set in Netlify UI
+  # VITE_APP_VERSION - Set in Netlify UI (e.g., 1.0.0)
+  # Optional (for server-side functions):
+  # STRIPE_SECRET_KEY - Set in Netlify UI
+  # SUPABASE_SERVICE_ROLE_KEY - Set in Netlify UI
